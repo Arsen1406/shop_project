@@ -4,7 +4,7 @@ stripe.api_key = 'sk_test_51LhdVjKk8h0TMPQxhT8SaAewlIn0g0ZsUQefwDvHMZRumD1SK21EX
 
 
 def create_product(item):
-    convert = item.price / 60 * 100
+    convert = item.price * 100
     session = stripe.checkout.Session.create(
         line_items=[{
             'price_data': {

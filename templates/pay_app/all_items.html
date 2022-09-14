@@ -11,7 +11,7 @@
     <ul>
         <li>Наименование: {{ item.name }}</li>
         <li>Описание товара: {{ item.description }}</li>
-        <li>Цена: {{ item.price }} рублей</li><br>
+        <li>Цена: {{ item.price }} $</li><br>
         <button onclick=location.href="{% url 'pay_app:item' item.id %}" id="buy-button">Узнать подробности</button>
     </ul><hr><br>
     {% endfor %}

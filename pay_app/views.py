@@ -11,10 +11,11 @@ def shop_all_items(request):
     template = 'pay_app/all_items.html'
     return render(request, template, context)
 
+
 def buy(request, item_id):
     item = Item.objects.get(id=item_id)
     session = create_product(item)
-    return redirect(session.url, code=303)
+    return redirect(session.url)
 
 
 def item(request, item_id):

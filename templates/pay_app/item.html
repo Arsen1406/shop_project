@@ -5,7 +5,7 @@
   <body>
     <h1>{{ item.name }}</h1>
     <p>{{ item.description | title }}</p>
-    <p>{{ item.price }} рублей</p>
+    <p>{{ item.price }} $</p>
     <button onclick=location.href="{% url 'pay_app:buy' item.id %}" id="buy-button">Buy</button>
     <script type="text/javascript">
       var stripe = Stripe('pk_test_a9nwZVa5O7b0xz3lxl318KSU00x1L9ZWsF');
