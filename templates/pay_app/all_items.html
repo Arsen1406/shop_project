@@ -6,6 +6,7 @@
 </head>
 <body>
     <h1>Наши товары</h1>
+    {% csrf_token %}
     {% for item in items %}
     <h3>{{ item.name }}</h3>
     <ul>
