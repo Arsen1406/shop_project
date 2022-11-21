@@ -1,11 +1,10 @@
-from rest_framework import viewsets
-from rest_framework import generics
+from rest_framework import viewsets, views, status
 from django.shortcuts import get_object_or_404, redirect
 
 from pay_app.models import Item
 from pay_app.create_price import create_product
 
-from .serializers import ItemSerializer, BuySerializer
+from .serializers import ItemSerializer
 
 
 class ItemsViewSet(viewsets.ModelViewSet):
@@ -14,12 +13,10 @@ class ItemsViewSet(viewsets.ModelViewSet):
     serializer_class = ItemSerializer
 
 
-class BuyViewSet(viewsets.ModelViewSet):
+class BuyViewSet(viewsets.ViewSetMixin):
     """Покупка товара."""
-    queryset = Item.objects.all()
-    serializer_class = ItemSerializer
 
-    def get(self, request):
-        item = get_object_or_404(Item, id=self.kwargs.get('item_id'))
+    def get(self, pk):
+        item = get_object_or_404(Item, id=pk)
         session = create_product(item)
-        return session.url
+        return redirect(session.url, status=status.HTTP_200_OK)
